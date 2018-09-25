@@ -1,3 +1,5 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
 <suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
 
     <parameter name="fname" value="IME" />
@@ -6,8 +8,10 @@
     <!-- <parameter name="timeout" value="10000"/> -->
     
 <!--     If using Factory, Factory class needs to go here, all @Test are executed  -->
-<!-- 	<test name = "TestNG Train 2">
-    	<class name="my.app." />
+	<test name = "TestNG Train 2">
+		<classes>
+	    	<class name="my.app.TestFactory" />
+		</classes>
     </test>
- -->
+
  </suite>

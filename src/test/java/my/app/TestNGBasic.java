@@ -11,24 +11,30 @@ public class TestNGBasic {
     // private Logger logger = Logger.getLogger(TestNGBasic.class.getName());
     private Logger logger = Logger.getLogger(TestNGBasic.class);
 
+    /**
+     * For @Before(@After) methods from the superclass to be executed
+     * before(after) methods from the subclass, method naming must be different
+     * in superclass and subclass. If method naming is the same, only methods
+     * from subclass are executed
+     */
     @BeforeClass
-    public void beforeCLass() {
-	logger.info("Before Class Root");
+    public void beforeBasicClass() {
+	logger.info("Before Class");
     }
 
     @AfterClass
-    public void afterClass() {
-	logger.info("After Class Root");
+    public void afterBasicClass() {
+	logger.info("After Class");
     }
 
     @BeforeMethod
-    public void BeforeMethod() {
-	logger.info("Before Method Root");
+    public void beforeBasicMethod() {
+	logger.info("Before Method");
     }
 
     @AfterMethod
-    public void afterMethod() {
-	logger.info("After Method Root");
+    public void afterBasicMethod() {
+	logger.info("After Method");
     }
 
     // Apparently it is enough to reference data provider by method name

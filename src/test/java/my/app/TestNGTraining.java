@@ -25,8 +25,6 @@ import org.testng.annotations.Test;
  * Data Provider Dependency injection - method</br>
  * Data Provider Dependency injection - Context</br>
  * Data Provider Dependency injection - method + Context</br>
- * 
- * @author etkhrto
  *
  */
 public class TestNGTraining extends TestNGBasic {
@@ -36,7 +34,7 @@ public class TestNGTraining extends TestNGBasic {
     private Logger logger = Logger.getLogger(TestNGTraining.class);
 
     @BeforeClass
-    public void beforeCLass() {
+    public void beforeClass() {
 	logger.info("Before Class");
     }
 
@@ -46,7 +44,7 @@ public class TestNGTraining extends TestNGBasic {
     }
 
     @BeforeMethod
-    public void BeforeMethod() {
+    public void beforeMethod() {
 	logger.info("Before Method");
     }
 
