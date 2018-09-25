@@ -1,0 +1,13 @@
+<suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
+
+    <parameter name="fname" value="IME" />
+    <parameter name="lname" value="PREZIME" />
+    <parameter name="contextPrameter"  value="value from the SUITE context"/>
+    <!-- <parameter name="timeout" value="10000"/> -->
+    
+<!--     If using Factory, Factory class needs to go here, all @Test are executed  -->
+<!-- 	<test name = "TestNG Train 2">
+    	<class name="my.app." />
+    </test>
+ -->
+ </suite>
