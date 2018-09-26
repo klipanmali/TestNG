@@ -29,7 +29,6 @@ import org.testng.annotations.Test;
  */
 public class TestNGTraining extends TestNGBasic {
     private Integer timeout;
-    private int instanceCount;
 
     // private Logger logger = Logger.getLogger(TestNGTraining.class.getName());
     private Logger logger = Logger.getLogger(TestNGTraining.class);
@@ -64,7 +63,7 @@ public class TestNGTraining extends TestNGBasic {
     }
 
     public TestNGTraining() {
-	instanceCount++;
+	super();
     }
 
     // Parameters can be provided on any method that has @Test, @Before/@After
@@ -101,7 +100,7 @@ public class TestNGTraining extends TestNGBasic {
     @Test(dataProvider = "createDataFromBase")
     public void f4(String str, Integer i) {
 	logger.info("TestNGTraining, test f4, data provider form inhereted class");
-	logger.info(String.format("TestNGTraining instance %d:", instanceCount));
+	logger.info(String.format("TestNGTraining instance %d:", objectIdentifier));
 	logger.info(str + " " + i);
     }
 

@@ -18,7 +18,6 @@ import org.testng.annotations.Test;
 public class TestNGTraining2 extends TestNGBasic {
 
     // not multithreadding so OK
-    private static int instanceCount = 0;
 
     private int parameter1FromFactory;
     private int parameter2FromFactory;
@@ -46,11 +45,10 @@ public class TestNGTraining2 extends TestNGBasic {
     }
 
     public TestNGTraining2(int parameter1, int parameter2) {
-	instanceCount++;
 	this.parameter1FromFactory = parameter1;
 	this.parameter2FromFactory = parameter2;
 	instanceName = String.format("%s %d", new Exception("it doesn't matter").getStackTrace()[0].getClassName(),
-		instanceCount);
+		objectIdentifier);
     }
 
     public void testf() {
