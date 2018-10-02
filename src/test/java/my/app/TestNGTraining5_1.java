@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
  * Soft dependency - execute this test only if test it depends were executed
  * successful
  */
-public class TestNGTraining51 {
+public class TestNGTraining5_1 {
     private Logger logger = Logger.getLogger(this.getClass());
     private Calculator calc = new Calculator();
 
