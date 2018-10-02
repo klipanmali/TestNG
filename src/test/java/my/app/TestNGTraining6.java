@@ -7,7 +7,12 @@ import org.testng.annotations.Test;
 
 /**
  * 
- * Dependences - groups version
+ * Dependences - groups version</br>
+ * 
+ * Order of Tests execution in group is not guaranteed.</br>
+ * In this case test executions are ordered by name. That is why this version
+ * differs from the previous version.</br>
+ * Don't count on it in the future.
  *
  */
 public class TestNGTraining6 {
@@ -20,7 +25,7 @@ public class TestNGTraining6 {
 
     @AfterGroups("security")
     public void teraDownSecurity() {
-	logger.info("tearing down security");
+	logger.info("Tearing down security\n");
     }
 
     @BeforeGroups("database")
@@ -30,7 +35,7 @@ public class TestNGTraining6 {
 
     @AfterGroups("database")
     public void tearDownDatabase() {
-	logger.info("tearing up database");
+	logger.info("Tearing up database\n");
     }
 
     @BeforeGroups("ui")
@@ -40,7 +45,7 @@ public class TestNGTraining6 {
 
     @AfterGroups("ui")
     public void tearDownUI() {
-	logger.info("tearing up UI");
+	logger.info("Tearing up UI\n");
     }
 
     @Test(groups = "database")
@@ -54,12 +59,12 @@ public class TestNGTraining6 {
     }
 
     @Test(groups = "security")
-    public void testUserAccess() {
+    public void accessUserPage() {
 	logger.info("testing User Access");
     }
 
     @Test(groups = "security")
-    public void TestAdminAccess() {
+    public void accessAdminPage() {
 	logger.info("testing Admin Access");
 	throw new RuntimeException();
     }
@@ -84,8 +89,8 @@ public class TestNGTraining6 {
 	logger.info("backend test 1");
     }
 
-    // depends on any security group ("securityall" "security1")
-    // depends on any database group ("databaseOracle" "databaseSQL")
+    // depends on any security group ("securityall" "security1" "security")
+    // depends on any database group ("databaseOracle" "databaseSQL" "database")
     @Test(dependsOnGroups = { "security.*", "database.*" }, alwaysRun = true)
     public void backendTest2() {
 	logger.info("backend test 2");
