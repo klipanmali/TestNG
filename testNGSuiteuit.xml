@@ -8,9 +8,15 @@
     <!-- <parameter name="timeout" value="10000"/> -->
     
 <!--     If using Factory, Factory class needs to go here, all @Test are executed  -->
-	<test name = "TestNG Train 2">
+	<test name = "TestNG Train 6">
+	<!-- dependency via xml suite -->
+	<groups>
+		<dependencies>
+			<group depends-on="test1" name="test3"/>
+		</dependencies>
+	</groups>
 		<classes>
-	    	<class name="my.app.TestFactory" />
+	    	<class name="my.app.TestNGTraining6_1" />
 		</classes>
     </test>
 

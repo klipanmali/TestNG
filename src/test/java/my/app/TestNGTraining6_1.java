@@ -1,7 +1,7 @@
 package my.app;
 
 import org.apache.log4j.Logger;
-import org.testng.Assert;
+import org.junit.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -43,95 +43,102 @@ import org.testng.annotations.Test;
  * If you wish to have a different set of before listeners which perform
  * different behaviors based on the group name then you shouldn't use
  * alwaysRun.</br>
+ * 
+ * <br/>
+ * This is definitely not the result i was hoping for<br/>
+ * There is on attribute "onlyForGroups" for &#64;BeforMethod and
+ * &#64;AfterMethod but it doesn't work for me. Maybe new TestNG version might
+ * help
  */
 
 public class TestNGTraining6_1 extends TestNGBasic {
 
     private Logger logger = Logger.getLogger(this.getClass());
 
-    @BeforeClass(groups = "beforeClassA")
+    @BeforeClass(groups = { "ClassA" })
     public void beforeClassA() {
 	logger.info("Before Class A");
     }
 
     // if your exception occurred in beforeClass or beforeMethod then
     // afterMethod and afterClass will be skipped
-    // For after methods (afterSuite, afterClass, ...):
+    // alwaysRun = true For after methods (afterSuite, afterClass, ...):
     // If set to true, this configuration method will be run even if one or more
     // methods invoked previously failed
     // or was skipped
-    @AfterClass(groups = "afterClassA", dependsOnGroups = "beforeClassA")
+    @AfterClass(groups = { "ClassA" })
     public void afterClassA() {
 	logger.info("After Class A");
     }
 
-    @BeforeClass(groups = "beforeClassB")
+    @BeforeClass(groups = { "ClassB" })
     public void beforeClassB() {
 	logger.info("Before Class B");
-	Assert.assertTrue(false);
+	// Assert.assertTrue(false);
     }
 
-    @AfterClass(groups = "afterClassB", dependsOnGroups = "beforeClassB")
+    @AfterClass(groups = { "ClassB" })
     public void afterClassB() {
 	logger.info("After Class B");
     }
 
-    @BeforeMethod(groups = "beforeMethod1", dependsOnGroups = "beforeClassA")
+    @BeforeMethod(groups = { "method1" })
     public void beforeMethod1() {
 	logger.info("Before Method 1");
     }
 
-    @AfterMethod(groups = "aftehMethod1", dependsOnGroups = "beforeMethod1")
+    @AfterMethod()
     public void afterMethod1() {
 	logger.info("After Method 1");
     }
 
-    @BeforeMethod(groups = "beforeMethod2", dependsOnGroups = { "beforeClassA", "beforeClassB" })
+    @BeforeMethod(groups = { "method2" })
     public void beforeMethod2() {
 	logger.info("Before Method 2");
     }
 
-    @AfterMethod(groups = "aftehMethod2", dependsOnGroups = "beforeMethod2")
+    @AfterMethod()
     public void afterMethod2() {
 	logger.info("After Method 2");
     }
 
-    @BeforeMethod(groups = "beforeMethod3", dependsOnGroups = { "beforeClassA", "beforeClassB" }, alwaysRun = true)
+    @BeforeMethod(groups = { "method3" })
     public void beforeMethod3() {
 	logger.info("Before Method 3");
     }
 
-    @AfterMethod(groups = "aftehMethod3", dependsOnGroups = "beforeMethod3")
+    @AfterMethod()
     public void afterMethod3() {
 	logger.info("After Method 3");
     }
 
-    @BeforeMethod(groups = "beforeMethod4", dependsOnGroups = { "beforeClassA", "beforeClassB" }, alwaysRun = true)
+    @BeforeMethod(groups = { "method4" })
     public void beforeMethod4() {
 	logger.info("Before Method 4");
 	// throw new RuntimeException();
-	Assert.assertTrue(false);
+	// Assert.assertTrue(false);
     }
 
-    @AfterMethod(groups = "aftehMethod4", dependsOnGroups = "beforeMethod4")
+    @AfterMethod()
     public void afterMethod4() {
 	logger.info("After Method 4");
     }
 
     // @Test(dependsOnGroups = { "beforeMethod1", "beforeMethod2" })
-    @Test
+    @Test(groups = { "test1" })
     public void f1() {
 	logger.info("Testting Method f1()");
+	Assert.fail();
     }
 
     // @Test(dependsOnGroups = { "beforeMethod1", "beforeMethod3" })
-    @Test
+    @Test(groups = { "test2" })
     public void f2() {
 	logger.info("Testting Method f2()");
     }
 
     // @Test(dependsOnGroups = { "beforeMethod1", "beforeMethod4" })
-    @Test
+    @Test(groups = { "test3" })
     public void f3() {
 	logger.info("Testting Method f3()");
     }
