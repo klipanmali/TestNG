@@ -33,7 +33,7 @@ public class TestNGBasic {
 
     @AfterClass
     public void afterBasicClass() {
-	logger.info("After Class " + Thread.currentThread());
+	logger.info("After Class " + Thread.currentThread() + "\n");
     }
 
     @BeforeMethod
@@ -43,7 +43,7 @@ public class TestNGBasic {
 
     @AfterMethod
     public void afterBasicMethod() {
-	logger.info("After Method " + Thread.currentThread());
+	logger.info("After Method " + Thread.currentThread() + "\n");
     }
 
     // Apparently it is enough to reference data provider by method name

@@ -26,7 +26,7 @@ public class TestNGTraining5_1 {
 
     @AfterMethod
     public void afterMethod() {
-	logger.info("After Method ");
+	logger.info("After Method \n ");
     }
 
     // Soft dependency
