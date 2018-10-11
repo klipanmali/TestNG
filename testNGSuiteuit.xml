@@ -1,22 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
+    <listeners>
+        <listener class-name="my.app.MyTestTransformer" />
+    </listeners>
 
     <parameter name="fname" value="IME" />
     <parameter name="lname" value="PREZIME" />
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
     <!-- <parameter name="timeout" value="10000"/> -->
     
-<!--     If using Factory, Factory class needs to go here, all @Test are executed  -->
-	<test name = "TestNG Train 6">
-	<!-- dependency via xml suite -->
-	<groups>
-		<dependencies>
-			<group depends-on="test1" name="test3"/>
-		</dependencies>
-	</groups>
+	<test name = "TestNG Train 5 with listener">
 		<classes>
-	    	<class name="my.app.TestNGTraining6_1" />
+	    	<class name="my.app.TestNGTraining5" />
 		</classes>
     </test>
 
