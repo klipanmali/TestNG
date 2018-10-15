@@ -2,7 +2,8 @@
 
 <suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
     <listeners>
-        <listener class-name="my.app.MyTestTransformer" />
+<!--         <listener class-name="my.app.MyTestTransformer" /> -->
+        <listener class-name="my.app.MyMethodInterceptor" />		
     </listeners>
 
     <parameter name="fname" value="IME" />
@@ -10,10 +11,18 @@
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
     <!-- <parameter name="timeout" value="10000"/> -->
     
-	<test name = "TestNG Train 5 with listener">
+<!-- 	<test name = "TestNG Train 5 with listener">
 		<classes>
 	    	<class name="my.app.TestNGTraining5" />
 		</classes>
     </test>
-
+ -->
+ 
+ 	<test name = "TestNG Train 9 Mothod Interceptor Listener">
+		<classes>
+	    	<class name="my.app.TestNGTraining5" />
+	    	<class name="my.app.TestNGTraining6" />
+		</classes>
+    </test>
+ 
  </suite>
