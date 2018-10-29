@@ -3,7 +3,8 @@
 <suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
     <listeners>
 <!--         <listener class-name="my.app.MyTestTransformer" /> -->
-        <listener class-name="my.app.MyMethodInterceptor" />		
+<!--         <listener class-name="my.app.MyMethodInterceptor" />		 -->
+        <listener class-name="my.app.MyMultiListener" />		
     </listeners>
 
     <parameter name="fname" value="IME" />
