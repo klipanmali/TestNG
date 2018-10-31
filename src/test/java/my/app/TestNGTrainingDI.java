@@ -3,9 +3,15 @@ package my.app;
 import java.lang.reflect.Method;
 
 import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.NoInjection;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlTest;
 
 /**
  * TestNG lets you declare additional parameters in your methods. TestNG will
@@ -44,7 +50,27 @@ import org.testng.annotations.Test;
 
 public class TestNGTrainingDI {
 
-    public void f() {
+    @BeforeSuite
+    public void thingsTODOBeforeSuite(ITestContext context) {
+	System.out.println("contextPrameter: " + context.getSuite().getParameter("contextPrameter"));
+	System.out.println("attributes: " + context.getSuite().getAttributeNames());
+	System.out.println("contextPrameter: " + context.getCurrentXmlTest().getParameter("contextPrameter"));
+    }
+
+    @BeforeTest
+    public void thigsTODOBeforeTest(ITestContext context) {
+	System.out.println("contextPrameter: " + context.getSuite().getParameter("contextPrameter"));
+	System.out.println("contextPrameter: " + context.getCurrentXmlTest().getParameter("contextPrameter"));
+    }
+
+    @BeforeClass
+    public void thignsTODOBeforeClass(XmlTest xmlTest) {
+	System.out.println("Test parameters: " + xmlTest.getAllParameters());
+    }
+
+    @BeforeMethod
+    public void thigsTODOBeforeMethod(Object[] attributes) {
+	System.out.println("method Attributes: " + attributes);
     }
 
     @DataProvider
@@ -68,6 +94,9 @@ public class TestNGTrainingDI {
     public void withInjection2(Method m) {// Method by DI, overrides
 					  // DataProvider
 	Assert.assertEquals(m.getName(), "f");
+    }
+
+    public void f() {
     }
 
 }

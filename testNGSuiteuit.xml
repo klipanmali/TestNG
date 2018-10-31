@@ -10,19 +10,22 @@
     <parameter name="fname" value="IME" />
     <parameter name="lname" value="PREZIME" />
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
-    <!-- <parameter name="timeout" value="10000"/> -->
     
-<!-- 	<test name = "TestNG Train 5 with listener">
+  	<test name = "TestNG Train 10 Dependency Injection">
+  	    <parameter name="contextPrameter"  value="value from the TEST context"/>
 		<classes>
-	    	<class name="my.app.TestNGTraining5" />
+	    	<class name="my.app.TestNGTrainingDI" />
 		</classes>
     </test>
- -->
  
- 	<test name = "TestNG Train 9 Mothod Interceptor Listener">
+   	<test name = "TestNG Train 10 Dependency Injection 2">
+  	    <parameter name="contextPrameter"  value="value from the TEST context 2"/>
 		<classes>
-	    	<class name="my.app.TestNGTraining5" />
-	    	<class name="my.app.TestNGTraining6" />
+	    	<class name="my.app.TestNGTrainingDI">
+	    	<methods>
+	    	<exclude name = "withInjection2" />
+	    	</methods>
+	    	</class>
 		</classes>
     </test>
  
