@@ -29,6 +29,14 @@ You can define groups at the class level and then add groups at the method level
 <<<<<
 
 >>>>>
+It does make sense to define the @BeforeTest/@AfterTest methods in a separate config class for each <test> tag containing
+more than one class. It makes things manageable as @BeforeTest and @AfterTest logic is common among all test methods of all
+classes/packages defined under that <test> tag. Otherwise whenever you might need to change the logic of @BeforeTest,
+@AfterTest, you need to look in all classes to find one which contain these methods. For @BeforeSuite/@AfterSuite, you can
+place them anywhere. Usually, the config class of one of the <test> tag is an ideal candidate for these methods.
+<<<<<
+
+>>>>>
 Parameters
 
 Test methods don't have to be parameterless.  You can use an arbitrary number of parameters
@@ -283,3 +291,22 @@ public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestRes
 public class MyTest {
   // ...
 }
+
+<<<<<
+
+>>>>>
+For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
+whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. You can configure this plugin in pom.xml to provide
+some configuration information like the location of test artifacts [testng.xml] and other properties.
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.18.1</version>
+    <configuration>
+        <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+        </suiteXmlFiles>
+     </configuration>
+</plugin>
+<<<<<

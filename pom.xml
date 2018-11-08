@@ -43,6 +43,12 @@
     	<artifactId>log4j</artifactId>
     	<version>1.2.17</version>
 	</dependency>
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-all</artifactId>
+		<version>1.10.19</version>
+		<scope>test</scope>
+	</dependency>
   </dependencies>
   
   <build>
@@ -70,6 +76,21 @@
 			</arguments>
 		</configuration>
 	</plugin>
-  </plugins>
+<!-- 	For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
+	whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. 
+	Additionally, surefire-plugin provides option to include the conditions(defining group, excluding groups, thread-count,
+	parallelism and many more directly with plugin configuration in pom.xml. So you have choice where to put those information
+	(in pom.xml or in suite testng.xml).
+	<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+     </plugin>
+ -->  </plugins>
   </build>
 </project>
