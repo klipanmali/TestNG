@@ -4,28 +4,17 @@
     <listeners>
 <!--         <listener class-name="my.app.MyTestTransformer" /> -->
 <!--         <listener class-name="my.app.MyMethodInterceptor" />		 -->
-        <listener class-name="my.app.MyMultiListener" />		
+<!--         <listener class-name="my.app.MyMultiListener" />		 -->
+        <listener class-name="my.app.RetryListener" />
     </listeners>
 
     <parameter name="fname" value="IME" />
     <parameter name="lname" value="PREZIME" />
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
     
-  	<test name = "TestNG Train 10 Dependency Injection">
-  	    <parameter name="contextPrameter"  value="value from the TEST context"/>
+  	<test name = "TestNG Train - Add and Control Test Failure Retries">
 		<classes>
-	    	<class name="my.app.TestNGTrainingDI" />
-		</classes>
-    </test>
- 
-   	<test name = "TestNG Train 10 Dependency Injection 2">
-  	    <parameter name="contextPrameter"  value="value from the TEST context 2"/>
-		<classes>
-	    	<class name="my.app.TestNGTrainingDI">
-	    	<methods>
-	    	<exclude name = "withInjection2" />
-	    	</methods>
-	    	</class>
+	    	<class name="my.app.TestNGTrainingRetry" />
 		</classes>
     </test>
  

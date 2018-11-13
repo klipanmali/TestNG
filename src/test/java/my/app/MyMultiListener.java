@@ -18,7 +18,7 @@ import org.testng.ITestResult;
  * 
  * There are several "TestNG Listeners" that allow you to modify TestNG's
  * behavior:</br>
- * IAnnotationTransformer</br>
+ * IAnnotationTransformer - only for Test annotation</br>
  * IAnnotationTransformer2</br>
  * IAnnotationTransformer3</br>
  * IHookable</br>
@@ -27,6 +27,7 @@ import org.testng.ITestResult;
  * IReporter</br>
  * ISuiteListener</br>
  * ITestListener</br>
+ * IAlterSuiteListener - gain access to the XmlSuite object</br>
  * </br>
  * ISuite.getAttributeNames didn't return suite's attributes
  */
