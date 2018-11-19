@@ -241,6 +241,41 @@ use them to rewrite your annotations, therefore you need to specify these listen
 Note that the @Listeners annotation will apply to your entire suite file, just as if you had specified it in a testng.xml file.
 If you want to restrict its scope (for example, only running on the current class), the code in your listener could first
 check the test method that's about to run and decide what to do then. 
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target ({ElementType.TYPE})
+public @interface DisableListener {}
+
+public class MyListener implements someITestNGListener {
+
+public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+  ConstructorOrMethod consOrMethod =iInvokedMethod.getTestMethod().getConstructorOrMethod();
+  DisableListener disable = consOrMethod.getMethod().getDeclaringClass().getAnnotation(DisableListener.class);
+  if (disable != null) {
+    return;
+  }
+  // else resume your normal operations
+}
+
+@DisableListener
+@Listeners({ com.example.MyListener.class, com.example.MyMethodInterceptor.class })
+public class MyTest {
+  // ...
+}
+
+<<<<<
+
+>>>>>
+Sometimes you may find some odd behavior in your testNG execution. In order to better understand some of the decisions testNG
+is making you can increase the log level of testNG itself.
+In your testNG.xml you can add verbose="10" attribute to the <suite> tag in order to have testNG print the most detailed
+information available to your console output during execution. The attribute accepts levels between 1 and 10 so you will
+receiver varying levels of details as you increase the value
+
+<suite name="Suite" parallel="tests" thread-count="10" verbose="10">
+You will now find during execution that your console output will contain information regarding the "planned" tests,
+methods, and listeners testNG is going to run. Throughout the execution you will also receive additional logic details
+from testNG as it executions your tests.
 <<<<<
 
 >>>>>
@@ -271,27 +306,6 @@ the right value
    which could be injected by TestNG, such as java.lang.reflect.Method, or come from a DataProvider
 
 You can turn off injection with the @NoInjection annotation.</br>
-<<<<<
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target ({ElementType.TYPE})
-public @interface DisableListener {}
-
-public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
-  ConstructorOrMethod consOrMethod =iInvokedMethod.getTestMethod().getConstructorOrMethod();
-  DisableListener disable = consOrMethod.getMethod().getDeclaringClass().getAnnotation(DisableListener.class);
-  if (disable != null) {
-    return;
-  }
-  // else resume your normal operations
-}
-
-@DisableListener
-@Listeners({ com.example.MyListener.class, com.example.MyMethodInterceptor.class })
-public class MyTest {
-  // ...
-}
-
 <<<<<
 
 >>>>>

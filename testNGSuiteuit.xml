@@ -5,16 +5,17 @@
 <!--         <listener class-name="my.app.MyTestTransformer" /> -->
 <!--         <listener class-name="my.app.MyMethodInterceptor" />		 -->
 <!--         <listener class-name="my.app.MyMultiListener" />		 -->
-        <listener class-name="my.app.RetryListener" />
+<!--         <listener class-name="my.app.RetryListener" /> -->
+        <listener class-name="my.app.TestNGTraining13Listener" />
     </listeners>
 
     <parameter name="fname" value="IME" />
     <parameter name="lname" value="PREZIME" />
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
     
-  	<test name = "TestNG Train - Add and Control Test Failure Retries">
+  	<test name = "TestNG Train 13 - Executing class end access class object through reflection">
 		<classes>
-	    	<class name="my.app.TestNGTrainingRetry" />
+	    	<class name="my.app.TestNGTraining13" />
 		</classes>
     </test>
  
