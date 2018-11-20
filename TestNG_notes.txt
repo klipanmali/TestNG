@@ -309,6 +309,14 @@ You can turn off injection with the @NoInjection annotation.</br>
 <<<<<
 
 >>>>>
+For skipped tests @beforeMethod and @AfterMethod are not executed, probably because test is skipped.
+But really interesting thing is how are "dependsOnMethods" tests handled in parallel execution.
+Sometimes these tests were executed before dependent test so instead of SKIP they get PASS ????
+check TestNGTesting14
+<<<<<
+
+>>>>>
+
 For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
 whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. You can configure this plugin in pom.xml to provide
 some configuration information like the location of test artifacts [testng.xml] and other properties.
