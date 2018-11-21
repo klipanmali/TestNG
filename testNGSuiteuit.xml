@@ -1,23 +1,23 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true" parallel= "methods">
+<suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
     <listeners>
 <!--         <listener class-name="my.app.MyTestTransformer" /> -->
 <!--         <listener class-name="my.app.MyMethodInterceptor" />		 -->
 <!--         <listener class-name="my.app.MyMultiListener" />		 -->
 <!--         <listener class-name="my.app.RetryListener" /> -->
 <!--         <listener class-name="my.app.TestNGTraining13Listener" /> -->
-        <listener class-name="my.app.TestNGTraining14Listener" />
+<!--         <listener class-name="my.app.TestNGTraining14Listener" /> -->
     </listeners>
 
     <parameter name="fname" value="IME" />
     <parameter name="lname" value="PREZIME" />
     <parameter name="contextPrameter"  value="value from the SUITE context"/>
     
-  	<test name = "TestNG Train 14 - Test Report possible for paralel execution">
+  	<test name = "TestNG Train 15 - Hard vs Soft Assert">
 		<classes>
-	    	<class name="my.app.TestNGTraining14" />
+	    	<class name="my.app.TestNGTraining15Asserts" />
 		</classes>
     </test>
- 
+    
  </suite>

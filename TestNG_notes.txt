@@ -317,6 +317,21 @@ check TestNGTesting14
 
 >>>>>
 
+<<<<<
+Hard vs Soft Assert
+
+Hard Assert throws an AssertExceptionimmediately when an assert statement
+fails and test suite continues with next @Test. Since It marks method as fail
+if assert condition gets failed and the remaining statements inside the
+method will be aborted.
+
+Soft Assert collects errors during @Test is running. They don't throw an
+exception when an assert fails. The execution will continue with the next
+step after the assert statement. Using assertAll() at the end it will check
+if any of the asserts during the test failed, and will fail your test with
+proper summary.
+>>>>>
+
 For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
 whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. You can configure this plugin in pom.xml to provide
 some configuration information like the location of test artifacts [testng.xml] and other properties.
