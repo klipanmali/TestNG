@@ -1,23 +1,62 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression Suite" configfailurepolicy="continue" allow-return-values="true">
-    <listeners>
+<!--     <listeners> -->
 <!--         <listener class-name="my.app.MyTestTransformer" /> -->
 <!--         <listener class-name="my.app.MyMethodInterceptor" />		 -->
 <!--         <listener class-name="my.app.MyMultiListener" />		 -->
 <!--         <listener class-name="my.app.RetryListener" /> -->
 <!--         <listener class-name="my.app.TestNGTraining13Listener" /> -->
 <!--         <listener class-name="my.app.TestNGTraining14Listener" /> -->
-    </listeners>
+<!--     </listeners> -->
 
-    <parameter name="fname" value="IME" />
-    <parameter name="lname" value="PREZIME" />
-    <parameter name="contextPrameter"  value="value from the SUITE context"/>
+<!--     <parameter name="fname" value="IME" /> -->
+<!--     <parameter name="lname" value="PREZIME" /> -->
+<!--     <parameter name="contextPrameter"  value="value from the SUITE context"/> -->
     
-  	<test name = "TestNG Train 15 - Hard vs Soft Assert">
+  	<test name = "TestNG Train 16 - Groups All">
 		<classes>
-	    	<class name="my.app.TestNGTraining15Asserts" />
+	    	<class name="my.app.TestNGTraining16Groups" />
 		</classes>
     </test>
     
+<!--  
+   	<groups>
+   		<run>
+   			<exclude name="g1"/>
+   		</run>
+   	</groups>
+   	<test name = "TestNG Train 16 - Groups except G1, on Suite and below">
+		<classes>
+	    	<class name="my.app.TestNGTraining16Groups" />
+		</classes>
+    </test>
+ --> 
+ 
+<!-- 	Auch this affects Suite too ????????? -->
+<!-- 
+   	<test name = "TestNG Train 16 - Groups except G1, on Test and below">
+   	<groups>
+   		<run>
+   			<exclude name="g1"/>
+   		</run>
+   	</groups>
+		<classes>
+	    	<class name="my.app.TestNGTraining16Groups" />
+		</classes>
+    </test>
+ -->
+<!-- 
+    <groups>
+   		<run>
+   			<include name="g1"/>
+   			<include name="g2"/>
+   		</run>
+   	</groups>
+    <test name = "TestNG Train 16 - Groups G1 and G2">
+		<classes>
+	    	<class name="my.app.TestNGTraining16Groups" />
+		</classes>
+    </test>
+ --> 
  </suite>

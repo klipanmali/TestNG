@@ -158,7 +158,7 @@ Method dependencie (dependsOnMethods = ...)
 Dependent method must be @Test annotated method and must be enabled. Also 'dependsOnMethods' in any @Before or @After
 annotated method doesn't work. It looks like 'dependsOnMethod is reserved for @Test annotated methods. Same thing can be
 accomplished by using 'dependsOnGroups' On using groups, we are no longer exposed to refactoring problems as when using
-'dependsOnMethods'
+'dependsOnMethods'. Similar problem exists for dependsOnGroups
 
 Groups dependencie (dependsOnGroups = ...)
 Order of Tests execution in group is not guaranteed. In this case test executions are ordered by name. Don't count on it in
@@ -190,6 +190,10 @@ Alternatively, you can specify your group dependencies in the testng.xml file. Y
 		.
 		.
 		.
+		
+In order to one @Test method have dependsOnGroups , there must be second @Test method that belongs to group that first method
+depends on. If there are only @Befoe or @After method that belong to the group, TestNG will throw exception for the first 
+@Test method with explanation there is no methods in dependant group. Similar as for dependsOnMethods 
 <<<<<
 
 >>>>>
@@ -318,6 +322,9 @@ check TestNGTesting14
 >>>>>
 
 <<<<<
+
+>>>>>
+
 Hard vs Soft Assert
 
 Hard Assert throws an AssertExceptionimmediately when an assert statement
