@@ -30,7 +30,7 @@ import org.testng.annotations.Test;
  * of stubbing void methods while the last one[findAllEmployees] is an example
  * of stubbing non void methods.
  * 
- * It’s important to understand that void methods can not be stubbed using usual
+ * It's important to understand that void methods can not be stubbed using usual
  * when(x.m()).then()construct[as in findAllEmployees()]as compiler complains
  * about calling a void method inside when.To get rid off this problem,you can
  * use any of doNothing(),doThrow(),doAnswer(),doReturn()constructs as we did
