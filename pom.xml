@@ -9,9 +9,12 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <jdk.version>1.8</jdk.version>
+    <suiteXmlFile>${basedir}/testNGSuite.xml</suiteXmlFile>
+    <skipTests>true</skipTests>
   </properties>
   
   <repositories>
@@ -80,17 +83,32 @@
 	whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. 
 	Additionally, surefire-plugin provides option to include the conditions(defining group, excluding groups, thread-count,
 	parallelism and many more directly with plugin configuration in pom.xml. So you have choice where to put those information
-	(in pom.xml or in suite testng.xml).
+	(in pom.xml or in suite testng.xml). -->
 	<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
                 <configuration>
-                    <suiteXmlFiles>
+<!--                 <suiteXmlFiles> <suiteXmlFile>${basedir}/testng.xml</suiteXmlFile> </suiteXmlFiles> -->
+<!--                <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    </suiteXmlFiles> -->
+<!--                 c:\Temp>java org.testng.TestNG -groups regressiontest - testname AllTests -->
+<!--                 <groups>regressiontest</groups> -->
+<!--                 <trimStackTrace>false</trimStackT;race> -->
+<!--                 <suitename>AllTests</suitename> -->
+
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+<!-- 				Build with '-DskipTests=true' to bypass test execution @ build time Default: false -->
+					<skipTests>${skipTests}</skipTests>
+					<testFailureIgnore>true</testFailureIgnore>
                 </configuration>
      </plugin>
- -->  </plugins>
+  </plugins>
+  <resources>
+	<!-- <resource> <directory>src/test/resources</directory> </resource> -->
+  </resources>
   </build>
 </project>
