@@ -14,9 +14,11 @@
 <!--     <parameter name="lname" value="PREZIME" /> -->
 <!--     <parameter name="contextPrameter"  value="value from the SUITE context"/> -->
     
-  	<test name = "TestNG Train 16 - Groups All">
+  	<test name = "TestNG Train 17 - Guice DI">
 		<classes>
-	    	<class name="my.app.TestNGTraining16Groups" />
+	    	<class name="my.app.TestNGTraining17GuiceDI" />
+	    	<class name="my.app.TestNGTraining171GuiceDI" />
+	    	<class name="my.app.TestNGTraining172GuiceDI" />
 		</classes>
     </test>
     

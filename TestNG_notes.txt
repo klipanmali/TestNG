@@ -320,11 +320,6 @@ check TestNGTesting14
 <<<<<
 
 >>>>>
-
-<<<<<
-
->>>>>
-
 Hard vs Soft Assert
 
 Hard Assert throws an AssertExceptionimmediately when an assert statement
@@ -339,6 +334,33 @@ if any of the asserts during the test failed, and will fail your test with
 proper summary.
 >>>>>
 
+>>>>>
+If you use Guice, TestNG gives you an easy way to inject your test objects with a Guice module
+@Guice(modules = GuiceExampleModule.class)
+public class GuiceTest extends SimpleBaseTest {
+	...
+}
+
+If you need more flexibility in specifying which modules should be used to instantiate your test classes,
+you can specify a module factory
+@Guice(moduleFactory = ModuleFactory.class)
+public class GuiceModuleFactoryTest {
+	...
+}
+The module factory needs to implement the interface IModuleFactory, and owerride .createModule method.
+Your factory will be passed an instance of the test context and the test class that TestNG needs to instantiate.
+Your .createModule method should return a Guice Module that will know how to instantiate this test class. You can use
+the test context to find out more information about your environment, such as parameters specified in testng.xml, etc... 
+
+You will get even more flexibility and Guice power with "parent-module" and "guice-stage" suite parameters.
+"guice-stage"allow you to chose the Stage used to create the parent injector. 
+<suite parent-module="com.example.SuiteParenModule" guice-stage="PRODUCTION">
+</suite>
+This is for further learning
+<<<<<
+
+
+TestNG support
 For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
 whenever test goal is executed [ with 'mvn test' / 'mvn install' e.g.]. You can configure this plugin in pom.xml to provide
 some configuration information like the location of test artifacts [testng.xml] and other properties.
