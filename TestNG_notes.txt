@@ -359,6 +359,14 @@ You will get even more flexibility and Guice power with "parent-module" and "gui
 This is for further learning
 <<<<<
 
+>>>>>
+Some good example of using Mockito in TestNG Unit test
+
+Some good example of using retry interface to retry failed TCs
+
+Some good example of how to generate some reporting 
+<<<<< 
+
 
 TestNG support
 For maven based project, the popular approach to run the tests is using maven-surefire-plugin which is used by-default
